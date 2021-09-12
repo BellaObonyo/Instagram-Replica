@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{% block content %} 
+{{ block.super}}
+
+<div class="container-fluid">
+
+  <!-- Looping through photos   -->
+  <div class="row photo">
+    <div class="col-md-4"></div>
+    <!-- displaying photos photos -->
+    <div class="col-md-4">
+      <h2 class="text-success">{{ photo.title }}</h2>
+      <h2>{{ photo.photo_name}}</h2>
+      <!--Display photos photo images  -->
+      <img src="{{photo.photo.url}}" class="img-thumbnail" alt="Image" onclick="window.open(this.src)">
+      <p style="font-style: oblique;">{{photo.photo_caption}}</p>
+      <p>Likes: <strong>{{photo.saved_likes}} </strong>
+      </p>
+      <P>Comments: <strong>{{photo.saved_comments.count}}</strong></P>
+      <P>Posted on: <strong>{{photo.posted_at}}</strong> by <span class="text-success">{{photo.user.username}}</span></P>
+      {% if photo.user.username == current_user.username %}
+      <a href="{% url 'delete' photo.id %}" class="btn btn-danger">Delete</a>
+      {% endif %}
+
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+{% endblock %}
