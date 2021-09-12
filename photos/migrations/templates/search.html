@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 search text-center">
+
+
+      {% if users%}
+      <h2 class="text-center">Found {{ users|length }} person(s)</h2>
+      {% else %}
+      <h2 class="text-center"> Found 0 results</h2>
+      {% endif %}
+      {% for person in users %}
+      <p><a class="text-primary" href="{% url 'users_profile' person.user.id  %}"><span
+            class="font-weight-bold">{{person.user.username}}</span></a></p>
+            {% if person.user.profile.profile_photo.url %}
+      <p><a href="{% url 'users_profile' person.user.id  %}">
+          <img src="{{person.user.profile.profile_photo.url}}" style="height: 20vh; width:20vh;border-radius:50%"
+            class="rounded-circle border" alt="img" width="50" height="50">
+        </a></p>
+        {% else %}
+        <i style="font-size:100px;color:#4888BE" class="fa fa-user" aria-hidden="true"></i>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}
