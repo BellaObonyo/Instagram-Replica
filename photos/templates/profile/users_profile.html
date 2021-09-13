@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-3">
+      {% if user.profile.profile_photo.url %}
+      <img src="{{user.profile.profile_photo.url}}" alt="{{user.profile_photo.url}}" width="200" height="200"
+        class="rounded-circle account-img">
+        {% else %}
+        <i style="font-size:100px;color:hsl(231, 64%, 49%)" class="fa fa-user" aria-hidden="true"></i>
+        {% endif %}
+    </div>
+    <div class="col-md-3">
+      <section>
+        <div class="row1">
+          <h3 class="">{{user.username}}</h3>
+        </div>
+
+        <div class="row2 mt-3">
+          <p class="">{{photos|length}} posts</p>
+          <p class="">{{user.profile.saved_followers}} followers</p>
+          <p class="">{{user.profile.saved_following}} following</p>
+        </div>
+        <div class="row3 mt-3">
+          <p class="">{{user.profile.bio}}</p>
+        </div>
+      </section>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-4">
+      {% if photos %}
+      {% for photo in photos %}
+      <div class="profile">
+        <div class="row">
+          <div class="col-md-2">
+            {% if photo.user.profile.profile_photo.url %}
+            <p><a href="{% url 'users_profile' photo.user.id %}"><img class="profile_photo"
+                  src="{{ photo.user.profile.profile_photo.url }}" alt="{{ photo.profile.name }}"></p>
+                  {% else %}
+                  <i style="font-size:100px;color:#4888BE" class="fa fa-user" aria-hidden="true"></i>
+                  {% endif %}
+          </div>
+          <div class="col-md-2">
+            <p class="username" style="margin-top: 5px;">{{ photo.user.username }}</p>
+          </div>
+        </div>
+        </a>
+      </div>
+      <div class="card-header">
+        <a href="{% url 'photo.detail' photo.id %}" class="open-project"><img src="{{photo.photo.url}}" alt="" class="img-thumbnail"></a>
+      </div>
+      <div class="card-body">
+        <div>
+          <a href=" {% url 'like' image_id=photo.id %}">
+            <i class="fa fa-heart-o fa-3x text-success" aria-hidden="true"></i></a>
+          <p><strong class="ml-3 photo_likes">{{photo.saved_likes}} </strong>
+            <strong>Likes</strong>
+          </p>
+        </div>
+        <div>
+          <p class=""><strong>{{photo.name}}</strong> {{photo.caption}}</p>
+        </div>
+        {% for comment in photo.saved_comments %}
+        <p class="ml-3"><span class="font-weight-bold text-success">{{comment.user.username}}</span>:
+          {{comment.comment}}</p>
+        {% endfor %}
+        <form action="{% url 'commentFunction' photo_id=photo.id %}" method="post">
+          {% csrf_token %}
+          {% bootstrap_form comment_form %}
+          <input type="submit" class="btn btn-success btn-lg" style="margin-bottom: 10px;" value="Comment">
+        </form>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+{% endblock %}
