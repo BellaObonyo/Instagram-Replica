@@ -41,7 +41,7 @@
           <p class="">{{user.profile.bio}}</p>
         </div>
       </div>
-      <hr style="height: 2px; background-color:gray">
+      <hr style="height: 2px; background-color:#16cf0f">
 
     </div>
 
@@ -56,7 +56,8 @@
         <div class="row">
           <div class="col-md-2">
             {% if photo.user.profile.profile_photo.url %}
-            <p><a href="{% url 'users_profile' photo.user.id %}"><img class="profile_photo"
+            <p><a href="{% url 'users_profile' photo.user.id %}">
+              <img width="60px" height="60px" class="profile_photo"
                   src="{{ photo.user.profile.profile_photo.url }}" alt="{{ photo.profile.name }}"></p>
                   {% else %}
                   <i style="font-size:100px;color:#4888BE" class="fa fa-user" aria-hidden="true"></i>
