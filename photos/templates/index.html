@@ -29,7 +29,8 @@
       <div class="card-body">
         <div>
           <a href=" {% url 'like' image_id=photo.id %}">
-            <i class="fa fa-heart-o fa-3x text-success" aria-hidden="true"></i></a>
+            <i class="fa fa-heart-o fa-3x .text-light" aria-hidden="true"></i></a>
+            <a href="/"><img src="https://img.icons8.com/ios/24/000000/home--v4.png" /></a>
           <p><strong class="ml-3 photo_likes">{{photo.saved_likes}} </strong>
             <strong>Likes</strong>
           </p>

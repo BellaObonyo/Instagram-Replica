@@ -94,7 +94,7 @@ class Like(models.Model):
   liker=models.ForeignKey(User,on_delete = models.CASCADE,related_name='userlikes')
 
   def __str__(self):
-    return "%s like" % self.photo
+    return "%s like" % self.image
 
 class Comment(models.Model):
   comment = models.TextField()
