@@ -6,7 +6,7 @@
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <a class="navbar-brand" href="{% url 'home' %}">
-          <p style="color: #010407;font-size:50px;"><i class="fa fa-instagram"  aria-hidden="true"></i> Instagram</p>
+          <p style="color: #010407;font-size:30px;"><i class="fa fa-instagram"  aria-hidden="true"></i> Instagram</p>
         </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
           data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -32,6 +32,9 @@
             </form>
           </li>
           <li>
+            <a href="{% url 'post'%}">Post</a>
+          </li>
+          <li>
             <div class="col-sm-6 col-md-6">
               {% if user.is_authenticated %}
           <li class="dropdown">
@@ -44,10 +47,7 @@
                 <a href="/accounts/password/change">Change Password</a>
               </li>
               <li>
-                <a href="{% url 'profile'%}">Profile</a>
-              </li>
-              <li>
-                <a href="{% url 'post'%}">Post</a>
+                <a style="color: black !important;" href="{% url 'profile'%}">Profile</a>
               </li>
               <li>
                 <a href="/logout">Logout</a>
