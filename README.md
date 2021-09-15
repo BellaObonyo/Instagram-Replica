@@ -2,7 +2,7 @@
 #### The app is about uploading q
 #### *Cynthia Bella Obonyo*
 ## Project Description
-    
+    This is an Instagram Replica-it allows the user to create an instagram account,make posts,delete posts,make comments and like posts
 
 ## Setup/Installation Requirements
     - Download a file in the code section to the desired folder
