@@ -20,7 +20,7 @@
     - See the number of likes made to a post.
 
 ## Live link
-Deployed project can be accessed here(https)
+Deployed project can be accessed here(https://bellainstgram.herokuapp.com/)
 
 ## Known Bugs
     The application works perfectly well, no bugs.
