@@ -56,7 +56,7 @@ def register(request):
     form = Registration()
   return render(request,'registration/registration.html',{"form":form})
 
-@login_required
+@login_required()
 def profile(request):
   comment_form = CommentsForm()
   current_user = request.user
